@@ -123,13 +123,11 @@ if(window.addEventListener){
 	addEventListener("load", drawCanvastouch, false);
 }
 
-
 // Das Canvas-Element mit der Maus
 
 function drawCanvasmouse() {
 	var canvas = document.getElementById('sig-canvas');
-	canvas.setAttribute("width", canvas.offsetWidth) // wird benötigt um die Canvas im css zu ändern da sonst ein offset stattfindet und der Zeiger nicht auf Position ist sondern versetzt zum Zeiger
-	canvas.setAttribute("height", canvas.offsetHeight)
+
 	if (canvas.getContext) {
 		var context = canvas.getContext('2d');
 		context.lineWidth = 3;
@@ -145,6 +143,12 @@ function drawCanvasmouse() {
 	// Malen mit der Maus
 	let active = false;
 	canvas.onmousedown = function () {
+
+		if (canvas.getAttribute("width") == 0) {
+			canvas.setAttribute("width", canvas.offsetWidth) // wird benötigt um die Canvas im css zu ändern da sonst ein offset stattfindet und der Zeiger nicht auf Position ist sondern versetzt zum Zeiger
+			canvas.setAttribute("height", canvas.offsetHeight)
+		}
+
 		active = true;
 		context.beginPath();
 		context.moveTo(x, y)
@@ -220,6 +224,11 @@ function drawCanvastouch(){
 	let active = false;
 	// Beim Laden ohne „aktivieren“ der variable wird die Funktion NICHT ausgeführt.
 	canvas.ontouchstart = function() { active = true; // Malt wenn der Touch startet active= true
+
+		if (canvas.getAttribute("width") == 0) {
+			canvas.setAttribute("width", canvas.offsetWidth) // wird benötigt um die Canvas im css zu ändern da sonst ein offset stattfindet und der Zeiger nicht auf Position ist sondern versetzt zum Zeiger
+			canvas.setAttribute("height", canvas.offsetHeight)
+		}
 		context.beginPath(); // Beginn der Linie
 		context.moveTo(lastx,lasty); // Anfangskoordinate der Linie Startpunkt der Linie
 	}
