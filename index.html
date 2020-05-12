@@ -23,19 +23,18 @@
   <header>
 
 
-
-    <div class="menuedropdown" > <!--für klieine Webseite -->
-      <button class="dropbtn"  onclick="zeigeSeite('Startseite')" href="#Startseite">   </button>
-      <div class="dropdown-content">
-        <a class="menue" onclick="zeigeSeite('Ueberuns')" href="#Ueberuns">Über uns</a>
-        <a class="menue" onclick="zeigeSeite('Referenzen')" href="#Referenzen" >Referenzen</a>
-        <a class="menue" onclick="zeigeSeite('Spiel')"href="#Spiel">Spiel</a>
-        <a class="menue" onclick="zeigeSeite('Impressum')"href="#Impressum">Impressum</a>
+    <div class="menuedropdown" > <!--für die kleine Version der Webseite -->
+      <button class="dropbtn"  onclick="zeigeSeite('Startseite') ,show('(dropdown-content ')" href="#Startseite">   </button> <!--Beim onclick auf den button öffnet sich das dropdown-content-->
+      <div class="dropdown-content" id="dropdown-content">
+        <a class="menue" onclick="zeigeSeite('Ueberuns') ,hide('dropdown-content')  " href="#Ueberuns">Über uns</a> <!--hide damit wenn es Über uns ausgewählt dass sich das dropdown schließt-->
+        <a class="menue" onclick="zeigeSeite('Referenzen') ,hide('dropdown-content') " href="#Referenzen" >Referenzen</a> <!--hide damit wenn es Referenzen ausgewählt dass sich das dropdown schließt-->
+        <a class="menue" onclick="zeigeSeite('Spiel') ,hide('dropdown-content')  "href="#Spiel">Spiel</a> <!--hide damit wenn es Spiel ausgewählt dass sich das dropdown schließt-->
+        <a class="menue" onclick="zeigeSeite('Impressum') ,hide('dropdown-content') "href="#Impressum">Impressum</a>  <!--hide damit wenn es Impressum ausgewählt dass sich das dropdown schließt-->
       </div>
     </div>
 
     <nav>
-      <div class="menueleiste"> <!--für große Webseite -->
+      <div class="menueleiste"> <!--für große version der Webseite -->
         <div class="menue"><a onclick="zeigeSeite('Startseite')" href="#Startseite">Startseite</a></div>
         <div class="menue"><a onclick="zeigeSeite('Ueberuns')" href="#Ueberuns">&Uuml;ber uns</a></div>
         <div class="menue"><a onclick="zeigeSeite('Referenzen')" href="#Referenzen">Referenzen</a></div>

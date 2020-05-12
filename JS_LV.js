@@ -1,12 +1,15 @@
 // Ein- und Ausblenden der "Seite" mit dem Inhaltes "Startseite" "Über uns" "Referenzen" "Impressum"
 function zeigeSeite(name) {
+
 for (let a of document.getElementsByClassName("Artikelinhalt")) {
 if (a.classList.contains(name)) {
 a.style.display = "block"; //Artikelinhalt des Ausgewählten (Name) kann Startseite,Über uns etc sein wird auf display block gesetzt und damit angezeigt
+
 } else
 a.style.display = "none";// Alles andere wird auf none gesetzt und wird damit ausgeblendet
-}
-}
+
+}}
+
 window.addEventListener("load", le => { // Hashtagbased Navigation
 let h = window.location.hash
 if (h != "") {
@@ -14,8 +17,16 @@ zeigeSeite(h.replace("#", ""))
 } else {
 zeigeSeite("displayinitially")
 }
-})
 
+})
+// MENÜ FÜHRUNG dropdowncontent ein (show) und ausblenden (hide) bei der kleinen Webseite
+function hide () {
+	document.getElementById("dropdown-content").style.display = "none";
+}
+function show () {
+	document.getElementById("dropdown-content").style.display = "block";
+}
+// ++++++++++++++++++++++++++Spiel ++++++++++++++++++++++++++++++++
  //Drag and Drop für das Spiel
 
 function allowDrop(ev) {
@@ -43,7 +54,7 @@ function dragLeave(ev) {
 }
 
 
-// ++++++++++++++++++++++++++Spiel Ergebnisse+++++++++++++++++++++++++++++++++
+// +++++++++++++Spiel Ergebnisse+++++++++++++++++
 //Spiel Lösungen vergleichenen
 
 function submit001 ()
@@ -193,7 +204,6 @@ function clearcanvas(){
 	ctx.beginPath();
 }
 
-
 //Touch Event Canvas
 
 // Das Canvas-Element
@@ -265,9 +275,7 @@ function navigiere(aktuelleid) {
         else
             div.style.display = "none";
     }
-
 }
-
 
 // +++++++++++++++++++++++++++++Referenzen+++++++++++++++++++++++++++
 
