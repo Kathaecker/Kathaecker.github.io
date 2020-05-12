@@ -1482,7 +1482,7 @@ table tr td p {
 .bilderleiste {
     margin-right: auto;
     margin-left: auto;
-    width: 100%;
+    width: 40em;
 }
 
 .caption-container {
