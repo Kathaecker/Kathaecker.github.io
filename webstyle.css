@@ -1330,18 +1330,21 @@ table tr td {
     cellspacing:0;
     width: 100%;
 }
-table tr td p {
-    text-align: justify;
-}
+
 
 @media (min-width: 500px) {
     table tr td p {
-        margin-right: 2em;}
+        margin-right: 2em;
+        text-align: justify;
+    }
 }
 
 @media (max-width: 499px){
 table tr td p {
-    margin-right: 0;}}
+    margin-right: 0;
+    text-align: left;
+
+}}
 
 
 /* Bilder Referenzen mit Modal */
