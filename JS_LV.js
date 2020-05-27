@@ -90,10 +90,13 @@ function submit001 ()
         body:JSON.stringify({Name:Name,AnzahlRichtige:b})}) //welche Daten werden vom request an den Server gesendet ( Name und Anzahl der Richtigen Ergebnisse.
 		.then(response=> {
 			if (response.status===200){
+				 response.json().then(function(data) {
 
+				 	 deletelast= data._id;
 				alert("Ihre Spielergebnisse finden Sie in der Ergebnistabelle."); // Wenn das Senden funktioniert hat wird ein alert ausgegeben.
-				location.reload(true); // aktuallisieren der Tabelle sodass das aktuelle Ergebnis drin steht
-			}
+				Ergebnisseladen(); // aktualisieren der Tabelle, sodass das aktuelle Ergebnis drin steht
+				document.getElementById('deletebtn').style.display='block';// Löschen Button sichtbar machen nachdem die Ergebnisse abgeschicht werden
+			})}
 		})
 }
 
@@ -103,26 +106,52 @@ function Ergebnisseladen() // JSON +JS
         if(response.status === 200) { response.json().then(function(data) { // responsestatus gibt an ob alles ok ist wenn 200 kommt
 
         	var tabelle = document.getElementById("Spielertabelle"); //verlinkung zur Tabelle im html
-            var count= Math.min (data.length,20) ; // max 20 Teilnehmer können in die Liste aufgenommen werden
+			while (tabelle.lastElementChild && tabelle.childElementCount > 1) { //  löscht die Tabelle so lange von hinten bis nur noch ein Element übrig bleibt (die Überschrift).
+				tabelle.removeChild(tabelle.lastElementChild);
+			}
+			var count= Math.min (data.length,20) ; // max 20 Teilnehmer können in die Liste aufgenommen werden
             for (var i=0; i<count;i++) {
 
-                var tableRowElement = document.createElement("tr"); //verlinkung zur tr (Tabellenreihe) im html //
-                //Berechnung zur Erstellung der Spielernummer
+                var tableRowElement = document.createElement("tr"); //verlinkung zur tr (Tabellenreihe) im html
                var Spielernummer = document.createElement("td"); //verlinkung zur td (Tabellenzeile) im html
                 Spielernummer.innerText = i + 1; //Definition Spielernummer Spielernummer bzw. Nummerierungen beginnt in JavaScript mit 0 daher +1
 				var Spielername = document.createElement("td"); //Erstellung einer Spalte td und in setzen der neuen variable Spielername in dieser Spalte
                 Spielername.innerText = data[i].Name; //var Spielername holt sich die info von Name der von dem User eingegeben wird und wird vom Server geladen- definiert in Ergebnis model, js)
                var AnzahlRichtige = document.createElement("td"); // Erstellung einer Spalte mit der Anzahl der Richten Ergebnissen
                AnzahlRichtige.innerText = data[i].AnzahlRichtige ;// holt er sich vom Server ( definiert im Ergebnis model.js)
+
                 tableRowElement.appendChild(Spielernummer); // Spielernummer (die bereits als td definiert wurde) der Tabelle zuordnen
                  tableRowElement.appendChild(Spielername);// Spielername  (die bereits als td definiert wurde)der Tabelle zuordnen
                tableRowElement.appendChild(AnzahlRichtige); // Anzahl der Richtige  (die bereits als td definiert wurde) der Tabelle zuordnen
                 tabelle.appendChild(tableRowElement);// Der Tabelle werden Spielernummer,-name und Anzahl richtige zugewiesen
+
                 }}
         );
 // der Browser verbietet request zu anderen Adressen , deswegen muss das html bei localhost abgespeichert sein (selber Speicherort)
 
         }})}
+
+
+ var deletelast // nimmt _Id an (siehe oben)
+
+
+function deletelastrow() {
+
+	fetch("http://localhost:3000/ergebnis/" + deletelast, { // Bei Senden wird die deleterowfunktion über klick möglich
+		method: "DELETE",headers:{'Content-Type': 'application/json'},//die Daten haben json format
+		})
+
+		.then(response => {
+		if (response.status === 200) { //200 Erfolgreich war
+			document.getElementById('deletebtn').style.display='none';// Löschen Button
+			Ergebnisseladen();
+
+		}
+	})
+};
+
+
+	//document.getElementById("Spielertabelle").deleteRow(i);
 
 
 //+++++++++++Canvas für die Signatur in Kontaktformular im IMPRESSUM+++++++++++++++++++++

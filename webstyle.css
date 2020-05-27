@@ -100,7 +100,6 @@ img {
     background-size: 100%;
     font-size: xx-large;
     text-align: center;
-    padding-top: 1em;
     display: flex;
 }
 @media (min-width: 500px){
@@ -1112,20 +1111,43 @@ iframe {
     margin-bottom: 2em;
 }
 
+
 #Spielertabelle {
     float: right;
     background-color: white;
-      padding: 1em;
+
     margin-bottom: 8em;
 }
 
 @media (min-width: 500px){
-    #Spielertabelle {
+    #Ergebnissebox {
         width: 35%;
         position: absolute;
         right: 0;
         margin-right: 5%;
+        display: block;
+        padding: 1em;
+        background-color: white;
+    }}
+
+@media (max-width: 499px){
+    #Ergebnissebox  {
+        width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: white;
         display: table;
+        margin-bottom: 4em;
+    }}
+
+
+@media (min-width: 500px){
+    #Spielertabelle {
+        width: 100%;
+        position: absolute;
+        right: 0;
+        display: table;
+        padding: 1em;
     }}
 
 @media (max-width: 499px){
@@ -1133,6 +1155,7 @@ iframe {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    margin-bottom: 1em;
 }}
 
 .DnDBildbox {
@@ -1286,7 +1309,19 @@ table tr td {
     padding-top: 0.1em;
     padding-bottom: 0.1rem;
     padding-right: 0.1em;
+    min-width: 1em;
 }
+#Deletebox {
+    text-align: center
+}
+#deletebtn {
+   width: 2em;
+    position: relative;
+display: none;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 
 @media (min-width: 500px){
 .datum{

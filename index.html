@@ -7,17 +7,17 @@
 
   <meta name="viewport" content="width=device-width, minimum-scale=1.0">
   <title> La Verde Landschafstplanung</title>
-  <link rel="stylesheet" href="webstyle.css">
-  <script src="JS_LV.js"></script>
+  <link rel="stylesheet" href="webstyle.css"> <!--Einbetten von css Datei-->
+  <script src="JS_LV.js"></script> <!--Einbetten von JavaScript Datei-->
 
 </head>
 
 
 <body>
 
-  <div class="UeberschriftLV">
+  <div class="UeberschriftLV"> <!--Bild im Hintergrund eingebettet-->
     <h1 class="UeberschriftLVtext">La Verde Landschaftsplanung </h1>
-    <a id="LVlogo"></a>
+    <a id="LVlogo"></a> <!--Logo im Hintergrund einebettet-->
   </div>
 
   <header>
@@ -94,7 +94,6 @@
 
 
   <article class="Artikelinhalt Ueberuns">
-
 
 
     <h1 class="Ueberschriften"> &Uuml;ber uns </h1>
@@ -303,7 +302,7 @@
               <script>
                 let loesung11 = document.getElementById('loesung11');
                 loesung11.addEventListener("change", function () {
-                  let Loeg1 = document.getElementById('Loe1');
+                  let Loe1 = document.getElementById('Loe1');
                   Loe1.innerHTML = this.value;
                 });
               </script>
@@ -516,13 +515,23 @@
         </div>
 
 
+
+<div id="Ergebnissebox">
+  <h2> Ergebnistabelle</h2>
+  <br>
+<div id="Deletebox"> <img id="deletebtn" src="delete.png" onclick="deletelastrow()"> Das Eigene letzte <wbr>Ergebniss kann nach dem Senden <wbr>gelöscht werden</div>
+
+      <br>
         <table id="Spielertabelle">
-          <tr>
-            <td class="Spielernummer"> Spielernr. </td>
-            <td class="Spielername">Spielername</td>
-            <td class="AnzahlRichtige">Erreichte Punkte</td>
+           <tr>
+            <td class="Spielernummer"> Spieler&shy;nr. </td>
+            <td class="Spielername">Spieler&shy;name</td>
+            <td class="AnzahlRichtige">Er&shy;reichte <wbr>Punkte</td>
+
           </tr>
         </table>
+</div>
+
         <script> Ergebnisseladen () // damit die Tabelle am Anfang zu sehen ist mit den bereits vorhandenen Spielerergebnissen..
         </script>
         <br>
