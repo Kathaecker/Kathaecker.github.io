@@ -28,12 +28,7 @@ exports.create = (req, res) => {
             });
         });
 };
-//ergebnis löschen
 
-//deletelastrow =(index, e) => {
-    //const ergebnis = Object.assign{},this Spielertabele.ergebnis);
-  //      users.splice(index, 1);
-//}
 
 
 // Delete a note with the specified noteId in the request
