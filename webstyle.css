@@ -180,7 +180,7 @@ position: relative;
         float: left;
         left: 5em;
         width: 6em;
-        top: 4.5em;
+        top: 5.5em;
         right: 5%;
         padding-right: 0;
         margin: 0;
@@ -789,7 +789,7 @@ div.form {
 }
 @media (min-width: 500px){
     #form label  {
-        float: left;
+
         width: auto;
     }}
 
