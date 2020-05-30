@@ -28,6 +28,38 @@ exports.create = (req, res) => {
             });
         });
 };
+//ergebnis löschen
+
+//deletelastrow =(index, e) => {
+    //const ergebnis = Object.assign{},this Spielertabele.ergebnis);
+  //      users.splice(index, 1);
+//}
+
+
+// Delete a note with the specified noteId in the request
+exports.delete = (req, res) => {
+    Ergebnis.findByIdAndRemove(req.params.ergebnisId)
+        .then(ergebnis => {
+            if (!ergebnis) {
+                return res.status(404).send({
+                    message: "Ergebnis not found with id " + req.params.ergebnisId
+                });
+            }
+            res.send({ message: "Last Row deleted successfully!" });
+        }).catch(err => {
+        if (err.kind === 'ObjectId' || err.name === 'NotFound') {
+            return res.status(404).send({
+                message: "Ergebnis not found with id " + req.params.ergebnisId
+            });
+        }
+        return res.status(500).send({
+            message: "Could not delete ergebnis with id " + req.params.ergebnisId
+        });
+    });
+
+};
+
+
 
 exports.findAll = (req, res) => {
     Ergebnis.find()
